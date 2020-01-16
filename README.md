@@ -1,5 +1,6 @@
-# HOW TO INSTALL
-# 01/2020
+# HOW TO CREACTE DESKTOP APPLICATION WITH ELECTRON AND REACT
+## HOW TO INSTALL
+#### 01/2020
 
 ### Create React App
 
@@ -125,6 +126,10 @@ yarn electron-dev
 ```
 yarn electron-pack
 ```
+***
+### Example files
+You can find an example project on directory
+> `./app_dir`
 ***
 ## IMPORTANT
 To auto reload electron app, install electron-reload
