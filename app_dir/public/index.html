@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Application"
+    />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="120x120" href="%PUBLIC_URL%/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
+    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="Application 2020">
+    <meta name="application-name" content="Application 2020">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/style.css">
+
+    <title>Application</title>
+  </head>
+  <body>
+    <noscript>Erreur!! <br> Cette application ne peut pas fonctionner sans javascript.</noscript>
+    <div id="root"></div>
+<script>
+  (function () {
+    var Ho_horloge_fcttimer = function () {
+      let elems = document.querySelectorAll(".cl_ho_horloge");
+      [].forEach.call(elems, function (element) {
+        element.innerHTML = sendmedate() + '<br>' + sendmetime()
+      })
+    }
+    var sendmedate = function (dttm) {
+      let date = null
+      if (dttm) {
+        date = new Date(dttm)
+      } else {
+        date = new Date
+      }
+      let annee = date.getFullYear()
+      let moi = date.getMonth()
+      let mois = new Array('Janvier', 'F&eacute;vrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Ao&ucirc;t', 'Septembre', 'Octobre', 'Novembre', 'D&eacute;cembre')
+      let j = date.getDate(); let jour = date.getDay()
+      let jours = new Array('Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi')
+      let h = date.getHours()
+      if (h < 10) {
+        h = "0" + h
+      }
+      let m = date.getMinutes()
+      if (m < 10) {
+        m = "0" + m
+      }
+      let s = date.getSeconds()
+      if (s < 10) {
+        s = "0" + s
+      }
+      return jours[jour] + ' ' + j + ' ' + mois[moi] + ' ' + annee
+    }
+    var sendmetime = function (dttm) {
+      let date = null
+      if (dttm) {
+        date = new Date(dttm)
+      } else {
+        date = new Date
+      }
+      let h = date.getHours()
+      if (h < 10) {
+        h = "0" + h
+      }
+      let m = date.getMinutes()
+      if (m < 10) {
+        m = "0" + m
+      }
+      let s = date.getSeconds()
+      if (s < 10) {
+        s = "0" + s
+      }
+      return h + ':' + m + ':' + s
+    }
+    var Ho_Horloge_timer = setInterval(
+      function () {
+        Ho_horloge_fcttimer()
+      }
+      , 1000
+    )
+  })()
+</script>
+  </body>
+</html>
