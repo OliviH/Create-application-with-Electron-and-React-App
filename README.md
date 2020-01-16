@@ -87,8 +87,8 @@ app.on("activate", () => {
     "url": "https://olivier.heimerdinger.me"
   },
   "build": {
-    "appId": "com.olivier.heimerdinger.me.mailing",
-    "productName": "Mailing",
+    "appId": "com.olivier.heimerdinger.me.MyProductName",
+    "productName": "MyProductName",
     "copyright": "Copyright © 2020 ${author}",
     "mac": {
       "category": "public.app-category.utilities"
