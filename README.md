@@ -132,3 +132,4 @@ yarn electron-pack
 * [Electron — BROWSER=none npm run start exited with code 1](https://medium.com/@atul15r/electron-browser-none-npm-run-start-exited-with-code-1-b95420c9eeda)
 * [electron-cra-boilerplate](https://github.com/rgfindl/electron-cra-boilerplate)
 * [Getting Started with Electron, Typescript, React and Webpack](https://www.sitepen.com/blog/getting-started-with-electron-typescript-react-and-webpack/)
+* [CRÉER SON APPLICATION MULTIPLATEFORME AVEC ELECTRON](https://www.softfluent.fr/blog/creer-application-multiplateforme-avec-electron/)
