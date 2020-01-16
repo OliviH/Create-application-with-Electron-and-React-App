@@ -126,6 +126,20 @@ yarn electron-dev
 yarn electron-pack
 ```
 ***
+## IMPORTANT
+To auto reload electron app, install electron-reload
+```
+yarn add electron-reload
+```
+and to enable auto reload add this in electron.js
+> `electron.js`
+```
+require('electron-reload')(__dirname, {
+    // Note that the path to electron may vary according to the main file
+    electron: require(`${__dirname}/node_modules/electron`)
+})
+```
+***
 #### `Inspiration from`
 * [I'm an inline-style link](https://www.google.com)
 * [How to build an Electron app using Create React App and Electron Builder](https://www.codementor.io/@randyfindley/how-to-build-an-electron-app-using-create-react-app-and-electron-builder-ss1k0sfer)
