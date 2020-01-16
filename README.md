@@ -4,7 +4,7 @@
 ### Create React App
 
 ```sh
-npx create-react-app  app`
+npx create-react-app  app
 cd app
 ```
 ***
