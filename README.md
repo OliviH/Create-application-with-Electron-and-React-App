@@ -131,13 +131,22 @@ To auto reload electron app, install electron-reload
 ```
 yarn add electron-reload
 ```
-and to enable auto reload add this in electron.js
+and to enable auto reload add this in electron.js `(example)`
 > `electron.js`
 ```
-require('electron-reload')(__dirname, {
-    // Note that the path to electron may vary according to the main file
-    electron: require(`${__dirname}/node_modules/electron`)
-})
+const electron = require("electron")
+const path = require("path")
+const electronReload = require("electron-reload")
+const app = electron.app
+const BrowserWindow = electron.BrowserWindow
+
+const isDev = require("electron-is-dev")
+
+if (isDev) {
+  electronReload(__dirname,{
+    electron: require(path.resolve(`${__dirname}`,`../node_modules/electron`))
+  })
+}
 ```
 ***
 #### `Inspiration from`
