@@ -12,26 +12,25 @@ if (isDev) {
   })
 }
 
-
-/* require('electron-reload')(__dirname, {
-    // Note that the path to electron may vary according to the main file
-    electron: require(path.resolve(`${__dirname}`),`../../node_modules/electron`)
-}) */
-
 const Store = require("./dep/store.js")
 
 const init_prefs = new Store({
-  configName: "user-preferences",
+  fileName: "App.Test.user-preferences",
   defaults: {
     windowConfig: { width: 1024, height: 768 }
   }
-})
+});
 
 let mainWindow;
 console.log("plus")
 function createWindow() {
   let { width, height } = init_prefs.get("windowConfig");
-  mainWindow = new BrowserWindow({ width: width, height: height, icon: 'favicon.ico' });
+  mainWindow = new BrowserWindow({
+    width: width,
+    height: height,
+    icon: "favicon.ico",
+    resizable: true
+  });
   mainWindow.loadURL(
     isDev
       ? "http://localhost:3000"
@@ -43,16 +42,17 @@ function createWindow() {
     mainWindow.webContents.openDevTools();
   }
   mainWindow.on("closed", () => (mainWindow = null))
+  mainWindow.on("resize", () => {
+    let { width, height } = mainWindow.getBounds();
+    init_prefs
+      .set("windowConfig", { width: width, height: height })
+      .then(() => {})
+      .catch(e => console.warn("ON RESIZE ERROR", e))
+  })
 }
 
 app.on("ready", createWindow)
-app.on("resize", () => {
-  let { width, height } = mainWindow.getBounds();
-  init_prefs
-    .set("windowConfig", { width, height })
-    .then(() => {})
-    .catch(e => console.warn("ON RESIZE ERROR", e))
-})
+
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
@@ -62,6 +62,6 @@ app.on("window-all-closed", () => {
 
 app.on("activate", () => {
   if (mainWindow === null) {
-    createWindow();
+    createWindow()
   }
-});
+})
